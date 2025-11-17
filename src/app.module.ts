@@ -7,6 +7,11 @@ import { appConfig } from './@core/config/app-config/app-config';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './@core/config/typeorm/typeorm-config.service';
+import { ScheduleModule } from '@nestjs/schedule';
+import { EventModule } from './modules/event/event.module';
+import { MetricModule } from './modules/metric/metric.module';
+import { ProfileModule } from './modules/profile/profile.module';
+import { CleanupModule } from './modules/cleanup/cleanup.module';
 
 @Module({
   imports: [
@@ -17,6 +22,11 @@ import { TypeOrmConfigService } from './@core/config/typeorm/typeorm-config.serv
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
+    ScheduleModule.forRoot(),
+    EventModule,
+    MetricModule,
+    ProfileModule,
+    CleanupModule,
   ],
   controllers: [AppController],
   providers: [AppService],

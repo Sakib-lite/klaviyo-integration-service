@@ -10,6 +10,9 @@ const envSchema = z.object({
   DATABASE_PASSWORD: z.string().optional().default(''),
   DATABASE_NAME: z.string(),
   APP_URL: z.string(),
+  KLAVIYO_API_KEY: z.string(),
+  KLAVIYO_API_URL: z.string(),
+  DATA_RETENTION_DAYS: z.coerce.number().optional().default(7),
 });
 
 export const appConfig = {
@@ -32,6 +35,9 @@ export enum ConfigKey {
   DATABASE_PASSWORD = 'DATABASE_PASSWORD',
   DATABASE_NAME = 'DATABASE_NAME',
   APP_URL = 'APP_URL',
+  KLAVIYO_API_KEY = 'KLAVIYO_API_KEY',
+  KLAVIYO_API_URL = 'KLAVIYO_API_URL',
+  DATA_RETENTION_DAYS = 'DATA_RETENTION_DAYS',
 }
 
 export { AppEnvironment };

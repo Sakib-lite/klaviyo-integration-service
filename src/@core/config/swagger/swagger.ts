@@ -80,7 +80,7 @@ export const setupSwagger = async (app: INestApplication) => {
   const privateDocument = SwaggerModule.createDocument(app, config, options);
 
   privateDocument.paths = Object.keys(privateDocument.paths)
-    .filter((path) => path.startsWith('/private'))
+    .filter((path) => path.includes('/private'))
     .reduce<Record<string, any>>((obj, key) => {
       obj[key] = privateDocument.paths[key];
       return obj;
