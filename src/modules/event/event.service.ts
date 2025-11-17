@@ -26,12 +26,11 @@ export class EventService {
     const savedEvent = await this.eventRepository.save(event);
 
     try {
-     const k= await this.klaviyoService.createEvent(
+      await this.klaviyoService.createEvent(
         createEventDto.eventName,
         createEventDto.eventAttributes,
         createEventDto.profileAttributes,
       );
-     console.log('k=>',k)
     } catch (error) {
       this.logger.warn(`Failed to send event to Klaviyo: ${error.message}`);
     }
@@ -67,7 +66,9 @@ export class EventService {
     try {
       await this.klaviyoService.createBulkEvents(klaviyoEvents);
     } catch (error) {
-      this.logger.warn(`Failed to send bulk events to Klaviyo: ${error.message}`);
+      this.logger.warn(
+        `Failed to send bulk events to Klaviyo: ${error.message}`,
+      );
     }
 
     return {
