@@ -64,8 +64,8 @@ const APP_URL = process.env.APP_URL || 'http://localhost:3000';
 
 export const setupSwagger = async (app: INestApplication) => {
   const config = new DocumentBuilder()
-    .setTitle('Book Management API')
-    .setDescription('API for managing books and authors')
+    .setTitle('Klaviyo backend integration')
+    .setDescription('API for managing external service')
     .setVersion('1.0.0')
     .addServer(APP_URL)
     .addBearerAuth(undefined, 'Apikey')
@@ -109,7 +109,7 @@ export const setupSwagger = async (app: INestApplication) => {
       defaultModelExpandDepth: 1,
       displayRequestDuration: true,
     },
-    customSiteTitle: 'Book Management API Documentation',
+    customSiteTitle: 'Klaviyo backend integration',
     customfavIcon: '/favicon.ico',
   };
 
